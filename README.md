@@ -1,6 +1,9 @@
 # fixEncodingJS
+Fix double encoding problems with javascript for use in Google BigQuery UDF's
 
----
+
+
+Fix strings that were orginaly encoded in UTF-8 but got interpreted as Windows-1252 and got re-encoded as UTF-8, AKA double encoded strings.
 ## Example
 double encoded string:
 
@@ -10,7 +13,7 @@ Fixed version:
 
 ```Упк-вофедщм```
 
----
+
 
 Using translation table from 
 
