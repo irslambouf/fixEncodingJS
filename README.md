@@ -22,3 +22,6 @@ https://github.com/nginx/nginx/blob/master/contrib/unicode2nginx/win-utf
 And UTF-16 to UTF-8 conversion
 
 https://github.com/google/closure-library/blob/master/closure/goog/crypt/crypt.js
+
+TODO
+add recursive call for multilevel encoding fix

@@ -261,3 +261,6 @@ function byteArrayToInt(bytes){
 
 	return value
 }
+
+//TODO
+//add recursive call for multilevel encoding fix
