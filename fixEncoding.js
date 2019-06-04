@@ -290,7 +290,7 @@ var utfToWindows1251 = {
 	0xE280BA : 0x9B,
 	0xE282AC : 0x88,
 	0xE28496 : 0xB9,
-	0xE284A2 : 0x99,
+	0xE284A2 : 0x99
 }
 
 function fixWin1251Utf8Encoding(string){
@@ -310,6 +310,12 @@ function fixWin1252Utf8Encoding(string){
 function fixEncoding(dict, headerToCheck, string){
 	// Original data
 	var utf8ByteArray = stringToUtf8ByteArray(string);	// Javascript encodes strings in UTF-16, convert to UTF-8
+	
+	if (utf8ByteArray == null){
+		// We failed to decode return original
+		return string;
+	}
+
 	// Return data
 	var newUtf8ByteArray = [];
 	// Return data index
@@ -388,6 +394,10 @@ function utf8ByteArrayToString(bytes) {
 
 // From https://github.com/google/closure-library/blob/master/closure/goog/crypt/crypt.js
 function stringToUtf8ByteArray(str) {
+  if (str == null){
+  	return null;
+  }
+
   var out = [], p = 0;
   for (var i = 0; i < str.length; i++) {
 	var c = str.charCodeAt(i);
