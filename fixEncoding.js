@@ -294,16 +294,20 @@ var utfToWindows1251 = {
 }
 
 function fixWin1251Utf8Encoding(string){
-	return fixEncoding(utfToWindows1251, string);
+    // All header values that are in dict above
+	var headerToCheck = [0xC2, 0xD0, 0xD1, 0xD2, 0xE2];
+
+	return fixEncoding(utfToWindows1251, headerToCheck, string);
 }
 
 function fixWin1252Utf8Encoding(string){
-	return fixEncoding(utfToWindows1252, string);
+    // All header values that are in dict above
+	var headerToCheck = [0xC2, 0xC3, 0xC5, 0xC6, 0xCB, 0xE2];
+	
+    return fixEncoding(utfToWindows1252, headerToCheck, string);
 }
 
-function fixEncoding(dict, string){
-	// All header values that are in dict above
-	var headerToCheck = [0xC2, 0xD0, 0xD1, 0xD2, 0xE2];
+function fixEncoding(dict, headerToCheck, string){
 	// Original data
 	var utf8ByteArray = stringToUtf8ByteArray(string);	// Javascript encodes strings in UTF-16, convert to UTF-8
 	// Return data
